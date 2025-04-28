@@ -1,7 +1,8 @@
 <?php
 
-namespace Database\Factories;
+//namespace Database\Factories;
 
+namespace Webkul\Payment\Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

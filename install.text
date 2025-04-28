@@ -1,0 +1,100 @@
+
+  Name: [Example]
+❯ 
+
+  Email address: [admin@example.com]
+❯ 
+
+  Password:
+❯ 
+
+   ERROR  Required.
+
+  Password:
+❯ 
+
+   ERROR  The password must be at least 8 characters long.
+
+  Password:
+❯ 
+
+✅ Admin user 'Example' created and assigned the 'admin' role successfully.
+🎉 ERP System installation completed successfully!
+
+
+php artisan make:model   Admin/Suppliers -m
+php artisan make:model   Admin/SGroups -m
+
+php artisan make:model  Admin/Records -m
+php artisan make:model   Admin/RTypes -m
+
+php artisan make:model   Admin/Products -m
+php artisan make:model   Admin/PModels -m
+php artisan make:model   Admin/PTypes -m
+php artisan make:model   Admin/PGroups -m
+php artisan make:model   Admin/PSections -m
+
+php artisan make:controller Admin/SuppliersController --resource
+php artisan make:controller Admin/SGroupsController --resource
+
+php artisan make:controller Admin/RecordsController --resource
+php artisan make:controller Admin/RTypesController --resource
+
+php artisan make:controller Admin/ProductsController --resource
+php artisan make:controller Admin/PModelsController --resource
+php artisan make:controller Admin/PTypesController --resource
+php artisan make:controller Admin/PGroupsController --resource
+php artisan make:controller Admin/PSectionsController --resource
+
+php artisan make:controller Admin/ImageController.php
+
+
+
+view.bat 
+@echo off
+set controllers=sgroups rtypes pmodels ptype pgroups psections records products suppliers 
+
+for %%i in (%controllers%) do (
+    set folder=%%i
+    mkdir "resources\views\admin\%%i"
+    type nul > "resources\views\admin\%%i\index.blade.php"
+    type nul > "resources\views\admin\%%i\create.blade.php"
+    type nul > "resources\views\admin\%%i\edit.blade.php"
+   
+)
+
+echo View folders and files created.
+
+
+
+composer create-project laravel/laravel asefa-laravel
+
+php artisan storage:link
+
+cd asefa-laravel
+
+composer install
+php artisan key:generate
+
+php artisan migrate
+php artisan serve
+
+composer dump-autoload -o
+
+php artisan config:clear
+php artisan route:clear
+php artisan cache:clear
+migration add_fields_to_users_table
+
+
+
+php artisan ui bootstrap --auth
+
+php artisan make:seeder ProductsTableSeeder
+php artisan db:seed --class=ProductsTableSeeder
+php artisan db:seed --class=PModelsTableSeeder
+
+
+  git config --global user.email "guru.ross@gmail.com"
+  git config --global user.name "hp430"
+  git config --global user.name "Dell 14 3000"
