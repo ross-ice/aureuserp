@@ -1,6 +1,6 @@
 
   Name: [Example]
-❯ 
+❯ ❯ ross
 
   Email address: [admin@example.com]
 ❯ 
@@ -76,7 +76,7 @@ cd asefa-laravel
 composer install
 php artisan key:generate
 
-php artisan migrate
+php artisan migrate -seeder
 php artisan serve
 
 composer dump-autoload -o
